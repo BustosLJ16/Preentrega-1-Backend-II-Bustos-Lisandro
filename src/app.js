@@ -1,5 +1,6 @@
 import express from "express";
 import { initMongoDB } from "./daos/mongodb/connection.js";
+import productRouter from './routers/products.routes.js'
 
 // Inicio mi Servidor con Express
 const app = express();
@@ -11,9 +12,13 @@ initMongoDB()
     .then(() => console.log('Conectado con MongoDB Exitosamente'))
     .catch((error) => console.log(error));
 
+// Establezco ruta de Product provisoria
+app.use('/products', productRouter);
+
+
 // Configurando escucha del Servidor
 const PORT = 8080;
-app.listen(()=>{
+app.listen(PORT, ()=>{
     console.log(`Escuchando el Servidor en el Puerto ${PORT}.`);
     
 })
