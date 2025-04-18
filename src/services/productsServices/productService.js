@@ -1,5 +1,4 @@
-
-import { productDao } from "../../daos/products/productDao.js";
+import { productDao } from "../../daos/productsDao/productDao.js";
 import CustomError from "../../utils/customError/customError.js";
 
 class ProductService {

@@ -1,4 +1,3 @@
-
 import { ProductModel } from "../models/products/productModel.js";
 import MongoDao from "../mongodb/mongoDao.js";
 
