@@ -1,6 +1,6 @@
 import passport from 'passport';
 import { Strategy as JwtStrategy, ExtractJwt } from 'passport-jwt';
-import { userDao } from '../../daos/usersDao/userDao.js';
+import { userDao } from '../../daos/dao/usersDao/userDao.js';
 
 const opts = {
     jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),

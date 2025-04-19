@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt'
-import CustomError from "../../utils/customError/customError.js";
-import { userDao } from '../../daos/usersDao/userDao.js';
+import CustomError from '../../utils/customError/customError.js';
+import { userDao } from '../../daos/dao/usersDao/userDao.js';
 
 class userService {
     constructor(dao){
@@ -13,7 +13,7 @@ class userService {
             if (existing){
                 throw new CustomError('El Usuario ya está Registrado.', 400);
             }
-            const hashedPassword = await bcrypt.hash(userData.password, 10);
+            const hashedPassword = bcrypt.hashSync(userData.password, 10);
             const user = {...userData, password: hashedPassword };
 
             const response = await this.dao.create(user);

@@ -1,3 +1,5 @@
+import mongoose from "mongoose";
+
 export default class MongoDao {
     constructor(model){
         this.model = model
@@ -21,6 +23,9 @@ export default class MongoDao {
 
     getById = async(id) => {
         try {
+            if(!mongoose.Types.ObjectId.isValid(id)){
+                return null;
+            }
             return await this.model.findById(id)
         } catch (error) {
             throw new Error(error);
@@ -42,4 +47,4 @@ export default class MongoDao {
             throw new Error(error);
         }
     }
-}
+};

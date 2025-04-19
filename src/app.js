@@ -3,7 +3,8 @@ import { engine } from 'express-handlebars';
 import { initMongoDB } from "./daos/mongodb/connection.js";
 import productRouter from "./routers/productsRoutes/products.routes.js";
 import usersRouter from './routers/usersRoutes/user.routes.js'
-import sessionsRouter from './routers/sessionsRouter/sessions.routes.js'
+import cartRouter from './routers/cartRoutes/cart.routes.js'
+import sessionsRouter from './routers/sessionsRoutes/sessions.routes.js'
 import cookieParser from "cookie-parser";
 import passportConfig from './config/passport/passport.js';
 
@@ -31,6 +32,7 @@ app.set('views', 'src/views');
 app.use('/products', productRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/sessions', sessionsRouter);
+app.use('/api/carts', cartRouter);
 
 // Rutas renderizadas con Views
 app.get('/register', (req, res) => res.render('register'));
