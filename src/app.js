@@ -1,13 +1,9 @@
 import express from "express";
+import cookieParser from "cookie-parser";
 import { engine } from 'express-handlebars';
 import { initMongoDB } from "./daos/mongodb/connection.js";
-import productRouter from "./routers/productsRoutes/products.routes.js";
-import usersRouter from './routers/usersRoutes/user.routes.js'
-import cartRouter from './routers/cartRoutes/cart.routes.js'
-import sessionsRouter from './routers/sessionsRoutes/sessions.routes.js'
-import cookieParser from "cookie-parser";
 import passportConfig from './config/passport/passport.js';
-
+import mainRouter from "./routers/main.routes.js";
 
 // Inicio mi Servidor con Express
 const app = express();
@@ -28,16 +24,10 @@ app.engine('hbs', engine({ extname: '.hbs' }));
 app.set('view engine', 'hbs');
 app.set('views', 'src/views');
     
-// Establezco rutas provisorias
-app.use('/products', productRouter);
-app.use('/api/users', usersRouter);
-app.use('/api/sessions', sessionsRouter);
-app.use('/api/carts', cartRouter);
-
-// Rutas renderizadas con Views
+// Rutas de mi App
+app.use('/api', mainRouter) // LLamada de mis Rutas en el Main
 app.get('/register', (req, res) => res.render('register'));
 app.get('/login', (req, res) => res.render('login'));
-
 
 // Configurando escucha del Servidor
 const PORT = 8080;

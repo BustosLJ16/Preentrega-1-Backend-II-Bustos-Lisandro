@@ -5,7 +5,7 @@ import productController from '../../controllers/productsControllers/productCont
 const router = Router();
 
 router.get('/', productController.getAll);          // Todos los Productos
-router.get('/:id', productController.getById);       // Producto especifico por ID
+router.get('/:id', productController.getById);      // Producto especifico por ID
 router.post('/', productController.create);         // Crear un Producto
 router.put('/:id', productController.update);       // Actualizar un Producto
 router.delete('/:id', productController.delete);    // Eliminar un Producto
